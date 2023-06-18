@@ -21,13 +21,13 @@ int main() {
             }
         }
 
-        watch(kase);
 
         int maxx = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
 
-                int sum = 0, ii = i, jj = j;
+                int sum = 0;
+                int ii = i, jj = j;
 
                 while (ii >= 0 && ii < n && jj >= 0 && jj < m) {
                     sum += board[ii][jj];
@@ -35,28 +35,29 @@ int main() {
                     jj--;
                 }
 
-                ii = j, jj = j;
+                ii = i, jj = j;
                 while (ii >= 0 && ii < n && jj >= 0 && jj < m) {
                     sum += board[ii][jj];
                     ii++;
                     jj--;
                 }
 
-                ii = j, jj = j;
+                ii = i, jj = j;
                 while (ii >= 0 && ii < n && jj >= 0 && jj < m) {
                     sum += board[ii][jj];
                     ii--;
                     jj++;
                 }
 
-                ii = j, jj = j;
+                ii = i, jj = j;
                 while (ii >= 0 && ii < n && jj >= 0 && jj < m) {
                     sum += board[ii][jj];
                     ii++;
                     jj++;
                 }
 
-                // sum -= 3*board[i][j];
+
+                sum -= 3*board[i][j];
                 maxx = max(maxx, sum);
 
                 // watch(maxx);
