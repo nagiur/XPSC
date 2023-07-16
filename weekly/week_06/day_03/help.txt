@@ -1,0 +1,5 @@
+Problem - day_3: AP Free Sequences
+Link: https://www.codechef.com/problems/THREEAPFREE
+---
+
+
