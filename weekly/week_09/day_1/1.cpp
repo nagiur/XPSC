@@ -3,26 +3,28 @@
 using namespace std;
 
 int main() {
-    int n, x, y;
-
-    vector<pair<int, bool>> vec;
+    int n;
     cin >> n;
-
-    while (n--) {
-        cin >> x >> y;
-        vec.push_back(make_pair(x, true));
-        vec.push_back(make_pair(y, false));
+    map<int, long long> cnt;
+    for (size_t i = 1; i <= n; i++) {
+        int l, r;
+        cin >> l >> r;
+        cnt[l]++;
+        cnt[r + 1]--;
     }
 
-    sort(vec.begin(), vec.end());
-    int now = 0, mx = 0;
-
-    for (size_t i = 0; i < vec.size(); i++) {
-        now += vec[i].second ? 1 : -1;
-        mx = max(mx, now);
-        cout << vec[i].first << " - " << vec[i].second << " - " << now << " - " << mx << endl;
+    for (size_t i = 1; i <= n; i++) {
+        cout << cnt[i] << " ";
     }
-    cout << mx << endl;
+    cout << endl;
+    long long sum = 0, ans = 0;
 
+    for (auto [idx, val] : cnt) {
+        sum += val;
+        ans = max(ans, sum);
+        cout << idx << " " << val << endl;
+    }
+cout<<endl;
+    cout << sum << " " << ans << endl;
     return 0;
 }
